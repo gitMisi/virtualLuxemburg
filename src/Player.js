@@ -1,13 +1,17 @@
 export default class Player {
-	constructor(position) {
-		this._position = position;
+	constructor() {
+		this._position = this.getRandomPosition();
+	}
+
+	getRandomPosition() {
+		return {lat: '1', lng: '1'};
 	}
 
 	getPosition() {
 		return this._position;
 	}
 
-	validatePosition() {
-		return true;
+	updatePosition(lat, lng) {
+		this._position = {lat, lng};
 	}
 }

@@ -1,5 +1,7 @@
 import input from "../input.json";
 import Game from './Game';
+import EventEmitter from 'event-emitter';
 window.initGame = function() {
-	const game = new Game(input);
+	const eventEmitter = EventEmitter({});
+	const game = new Game(input, eventEmitter);
 }
