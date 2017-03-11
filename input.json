@@ -1,0 +1,18 @@
+{
+  "type": "",
+  "geometry": {
+    "type": "Point",
+    "coordinates": [
+      6.063059589573,
+      49.5677759570921
+    ],
+    "panoId" : ""
+  },
+  "properties": {
+    "name": "",
+    "image": null,
+    "thumbnail": null,
+    "is_label": false,
+    "label": ""
+  }
+}
