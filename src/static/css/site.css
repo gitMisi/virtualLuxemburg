@@ -222,6 +222,14 @@ a {
     z-index: 9;
     background-color: rgba(0,0,0,.6);
 }
+@-moz-keyframes pulse { 0% { -moz-opacity: 0.9; } 50% { -moz-opacity: 0.6; } 100% { -moz-opacity: 0.9; } }
+@-webkit-keyframes pulse { 0% { opacity: 0.9; } 50% { opacity: 0.6; } 100% { opacity: 0.9; } }
+@keyframes pulse { 0% { opacity: 0.9; } 50% { opacity: 0.6; } 100% { opacity: 0.9; } }
+#overlay.border {
+    -webkit-animation: pulse 2s infinite ease-in-out;
+    -moz-animation: pulse 2s  infinite ease-in-out;
+    animation: pulse 2s infinite ease-in-out;
+}
 #overlay.border h1 {
     font-size: 60px;
     display: inline-block;
