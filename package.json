@@ -1,0 +1,24 @@
+{
+  "name": "virtuallux",
+  "version": "1.0.0",
+  "description": "Game of Code 2017 Jack Daniels Team\r Commit test from Attila",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gitMisi/virtualLuxemburg.git"
+  },
+  "author": "jackdaniels",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gitMisi/virtualLuxemburg/issues"
+  },
+  "homepage": "https://github.com/gitMisi/virtualLuxemburg#readme",
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "webpack": "^2.2.1"
+  }
+}
