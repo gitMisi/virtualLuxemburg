@@ -1,6 +1,9 @@
-import gmaps from 'gmaps';
-export default class Map {
-	constructor(input) {
+import {EventEmitter} from './EventEmitter';
+import ee from 'event-emitter';
+
+export default class StreetView {
+	constructor(input, player) {
+		this._player = player;
 		this.initMap(input);
 	}
 
@@ -10,17 +13,16 @@ export default class Map {
 	 */
 	initMap(input) {
 		this.radius = 20;
-		this.center = new google.maps.LatLng(parseInt(input.geometry.coordinates.lat, 10), parseInt(input.geometry.coordinates.lng));
-		var sv = new google.maps.StreetViewService();
+		this.goal = new google.maps.LatLng(input.coordinates.lat, input.coordinates.lng);
+		this._streetview = new google.maps.StreetViewService();
 
-		this.panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
+		this.panorama = new google.maps.StreetViewPanorama(document.getElementById('container'));
 
 		this.panorama.addListener('links_changed', () => {
-			console.log(this.panorama.getPosition().lat());
-			this.currentPosition =
-				new google.maps.LatLng(this.panorama.getPosition().lat(), this.panorama.getPosition().lng());
+			EventEmitter.emit('position-change', {lat: this.panorama.getPosition().lat(), lng: this.panorama.getPosition().lng()});
+
 		});
-		sv.getPanorama({location: input, radius: 50}, this.processSVData.bind(this));
+		this._streetview.getPanorama({location: input.coordinates, radius: 50}, this.processSVData.bind(this));
 	}
 
 	processSVData(data, status) {
@@ -53,6 +55,8 @@ export default class Map {
 	}
 
 	validate() {
-		return (google.maps.geometry.spherical.computeDistanceBetween(this.currentPosition, this.center) <= this.radius);
+		let pos = this._player.getPosition();
+		let latlng = new google.maps.LatLng(pos.lat, pos.lng);
+		return (google.maps.geometry.spherical.computeDistanceBetween(latlng, this.goal) <= this.radius);
 	}
 }
