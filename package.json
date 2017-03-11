@@ -4,7 +4,8 @@
   "description": "Game of Code 2017 Jack Daniels Team\r Commit test from Attila",
   "main": "index.js",
   "scripts": {
-    "build": "webpack"
+    "build": "webpack",
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -20,5 +21,8 @@
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
     "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "gmaps": "^0.4.24"
   }
 }

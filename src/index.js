@@ -1,3 +1,6 @@
 import Map from "./map";
 
-const map = new Map();
+
+window.initGame = function() {
+	const map = new Map();
+}

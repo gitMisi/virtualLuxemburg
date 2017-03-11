@@ -2,10 +2,13 @@
   "type": "",
   "geometry": {
     "type": "Point",
-    "coordinates": [
-      6.063059589573,
-      49.5677759570921
-    ],
+    "goal" : {
+      "coordinates": [
+        6.063059589573,
+        49.5677759570921
+      ]
+    },
+    "geofence" : [],
     "panoId" : ""
   },
   "properties": {
