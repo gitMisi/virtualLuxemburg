@@ -1,9 +1,5 @@
-import Map from "./map";
-
 import input from "../input.json";
-
-
+import Game from './Game';
 window.initGame = function() {
-	//const game = new Game();
-	console.log(input);
+	const game = new Game(input);
 }
