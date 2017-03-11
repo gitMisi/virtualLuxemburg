@@ -1,30 +1,58 @@
 import gmaps from 'gmaps';
 export default class Map {
-	constructor(config) {
-		console.log('NEW MAP')
+	constructor(input) {
+		this.initMap(input);
 	}
 
-	initMap() {
-		var berkeley = {lat: 37.869085, lng: -122.254775};
+	/**
+	 *
+	 * @param input
+	 */
+	initMap(input) {
+		this.radius = 20;
+		this.center = new google.maps.LatLng(input.geometry.coordinates.lat, input.geometry.coordinates.lng);
 		var sv = new google.maps.StreetViewService();
 
-		panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
+		this.panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
 
-		// Set up the map.
-		map = new google.maps.Map(document.getElementById('map'), {
-			center: berkeley,
-			zoom: 16,
-			streetViewControl: false
+		this.panorama.addListener('links_changed', () => {
+			console.log(this.panorama.getPosition().lat());
+			this.currentPosition =
+				new google.maps.LatLng(this.panorama.getPosition().lat(), this.panorama.getPosition().lng());
 		});
+		sv.getPanorama({location: berkeley, radius: 50}, this.processSVData.bind(this));
+	}
 
-		// Set the initial Street View camera to the center of the map
-		sv.getPanorama({location: berkeley, radius: 50}, processSVData);
+	processSVData(data, status) {
+		if (status === 'OK') {
+			var marker = new google.maps.Marker({
+				position: data.location.latLng,
+				map: this.map,
+				title: data.location.description
+			});
 
-		// Look for a nearby Street View panorama when the map is clicked.
-		// getPanoramaByLocation will return the nearest pano when the
-		// given radius is 50 meters or less.
-		map.addListener('click', function(event) {
-			sv.getPanorama({location: event.latLng, radius: 50}, processSVData);
-		});
+			this.panorama.setPano(data.location.pano);
+			this.panorama.setPov({
+				heading: 270,
+				pitch: 0
+			});
+			this.panorama.setVisible(true);
+
+			marker.addListener('click', ()=> {
+				var markerPanoID = data.location.pano;
+				this.panorama.setPano(markerPanoID);
+				this.panorama.setPov({
+					heading: 270,
+					pitch: 0
+				});
+				this.panorama.setVisible(true);
+			});
+		} else {
+			console.error('Street View data not found for this location.');
+		}
+	}
+
+	validate() {
+		return (google.maps.geometry.spherical.computeDistanceBetween(this.currentPosition, this.center) <= this.radius);
 	}
 }

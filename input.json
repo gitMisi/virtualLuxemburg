@@ -1,21 +1,8 @@
 {
-  "type": "",
   "geometry": {
-    "type": "Point",
-    "goal" : {
-      "coordinates": [
-        6.063059589573,
-        49.5677759570921
-      ]
-    },
-    "geofence" : [],
-    "panoId" : ""
-  },
-  "properties": {
-    "name": "",
-    "image": null,
-    "thumbnail": null,
-    "is_label": false,
-    "label": ""
+    "coordinates": [
+      37.869085,
+      -122.254775
+    ]
   }
 }

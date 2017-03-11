@@ -3,13 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <title>Virtual Lux</title>
+    <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map {
+            height: 100%;
+        }
+
+        #floating-panel {
+            position: absolute;
+            top: 10px;
+            left: 25%;
+            z-index: 5;
+            background-color: #fff;
+            padding: 5px;
+            border: 1px solid #999;
+            text-align: center;
+            font-family: 'Roboto', 'sans-serif';
+            line-height: 30px;
+            padding-left: 10px;
+        }
+
+        #pano {
+            width: 50%;
+            height: 100%;
+            float: left;
+        }
+
+        #floating-panel {
+            width: 45%;
+            height: 100%;
+            float: right;
+            text-align: left;
+            overflow: auto;
+            position: static;
+            border: 0px solid #999;
+        }
+    </style>
 </head>
 <body>
-<script src="bundle.js"></script>
-<script src="//maps.google.com/maps/api/js?key=jsAIzaSyAaOwhbC5QSDXHw7vDRANya6YTsWtYW3ek&callback=initGame"></script>
 
 <div id="pano"></div>
 <div id="map"></div>
+<div id="floating-panel">
+    <table>
+        <tr>
+            <td><b>Position</b></td>
+            <td id="position-cell">&nbsp;</td>
+        </tr>
+        <tr>
+            <td><b>POV Heading</b></td>
+            <td id="heading-cell">270</td>
+        </tr>
+        <tr>
+            <td><b>POV Pitch</b></td>
+            <td id="pitch-cell">0.0</td>
+        </tr>
+        <tr>
+            <td><b>Pano ID</b></td>
+            <td id="pano-cell">&nbsp;</td>
+        </tr>
+        <table id="links_table"></table>
+    </table>
+</div>
 
+<script src="public/bundle.js"></script>
+<script src="//maps.google.com/maps/api/js?key=AIzaSyAaOwhbC5QSDXHw7vDRANya6YTsWtYW3ek&libraries=geometry&callback=initGame"></script>
 </body>
 </html>
