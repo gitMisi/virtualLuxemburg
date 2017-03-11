@@ -4,7 +4,7 @@
   "description": "Game of Code 2017 Jack Daniels Team\r Commit test from Attila",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
@@ -15,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/gitMisi/virtualLuxemburg/issues"
   },
-  "homepage": "https://github.com/gitMisi/virtualLuxemburg#readme"
+  "homepage": "https://github.com/gitMisi/virtualLuxemburg#readme",
+  "devDependencies": {
+    "babel-core": "^6.23.1",
+    "babel-loader": "^6.3.2",
+    "webpack": "^2.2.1"
+  }
 }
