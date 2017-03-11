@@ -10,17 +10,16 @@ export default class Map {
 	 */
 	initMap(input) {
 		this.radius = 20;
-		this.center = new google.maps.LatLng(parseInt(input.geometry.coordinates.lat, 10), parseInt(input.geometry.coordinates.lng));
+		this.center = new google.maps.LatLng(input.coordinates.lat, input.coordinates.lng);
 		var sv = new google.maps.StreetViewService();
 
 		this.panorama = new google.maps.StreetViewPanorama(document.getElementById('pano'));
 
 		this.panorama.addListener('links_changed', () => {
-			console.log(this.panorama.getPosition().lat());
 			this.currentPosition =
 				new google.maps.LatLng(this.panorama.getPosition().lat(), this.panorama.getPosition().lng());
 		});
-		sv.getPanorama({location: input, radius: 50}, this.processSVData.bind(this));
+		sv.getPanorama({location: input.coordinates, radius: 50}, this.processSVData.bind(this));
 	}
 
 	processSVData(data, status) {
