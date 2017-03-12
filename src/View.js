@@ -8,18 +8,29 @@ import {EventEmitter} from './EventEmitter';
 export default class View {
 
 	constructor() {
-		delegate.on(document.body, '.next_mission_btn', 'click', function self (e) {
+		delegate.on(document.body, '.next_mission_btn', 'click', ()=> {
 			EventEmitter.emit('next-mission');
-		})
+		});
+		delegate.on(document.body, '.minimize', 'click', ()=> {
+			this.minimizeMissionBlock();
+			dom('#mission_block').on('click', ()=> {
+				dom('#mission_block').removeClass('minimized');
+			})
+		});
+	}
+
+	minimizeMissionBlock() {
+		dom('#mission_block').addClass('minimized');
 	}
 
 	updateMissionBlock(config) {
 		dom('#mission_block').html(MissionBlock(config));
 		dom('#mission_block').removeClass('fall');
 	}
+
 	displayFinishedNotification(config) {
 		dom('body').add(MissionSuccess(config));
-        dom('#mission_block').addClass('fall');
+		dom('#mission_block').addClass('fall');
 	}
 
 	hideFinishedNotification() {
@@ -34,6 +45,7 @@ export default class View {
 		document.getElementById('distance').className = '';
 		dom('#distance').addClass('red');
 	}
+
 	showDistanceDecreasing() {
 		document.getElementById('distance').className = '';
 		dom('#distance').addClass('green');

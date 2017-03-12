@@ -288,6 +288,7 @@ img {
     display:none;
 }
 #mission_block.minimized {
+	cursor: pointer;
     width: 180px;
     height: 120px;
     border: 1px solid #ccc;

@@ -10,7 +10,6 @@ export default class StreetView {
 	 * @param input
 	 */
 	initMap(input, randomPos) {
-		console.log(input, randomPos)
 		this.goal = new google.maps.LatLng(input.coordinates.lat, input.coordinates.lng);
 		this._streetview = new google.maps.StreetViewService();
 
@@ -22,7 +21,6 @@ export default class StreetView {
 				lat: this.panorama.getPosition().lat(),
 				lng: this.panorama.getPosition().lng()
 			});
-
 		});
 	}
 
@@ -31,7 +29,6 @@ export default class StreetView {
 			if (data.copyright.indexOf('Google') == -1 || data.links.length === 0) {
 				EventEmitter.emit('position-invalid');
 			}
-			console.log('daTA: ', data)
 			var marker = new google.maps.Marker({
 				position: data.location.latLng,
 				map: this.map,
