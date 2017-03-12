@@ -81,6 +81,7 @@ img {
     font-size: 24px;
     font-weight: bold;
     text-shadow: 0 0 30px #525252;
+    z-index: 10;
 }
 .red {
     color:#ed2939;
