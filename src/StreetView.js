@@ -3,7 +3,7 @@ import ee from 'event-emitter';
 
 export default class StreetView {
 	constructor(input, randomPos) {
-		this.initial = true;
+		console.log('GOAL: ', input.coordinates, 'randomPOS: ', randomPos)
 		this.initMap(input, randomPos);
 	}
 
@@ -12,6 +12,7 @@ export default class StreetView {
 	 * @param input
 	 */
 	initMap(input, randomPos) {
+		console.log(input, randomPos)
 		this.goal = new google.maps.LatLng(input.coordinates.lat, input.coordinates.lng);
 		this._streetview = new google.maps.StreetViewService();
 
@@ -19,9 +20,6 @@ export default class StreetView {
 		this._streetview.getPanorama({location: randomPos}, this.processSVData.bind(this));
 
 		this.panorama.addListener('links_changed', () => {
-			if (this.initial) {
-				this.initial = false;
-			}
 			EventEmitter.emit('position-change', {
 				lat: this.panorama.getPosition().lat(),
 				lng: this.panorama.getPosition().lng()
