@@ -8,11 +8,20 @@ import View from './View';
 
 export default class Game {
 	constructor(input) {
-		this.input = input;
+		this.initialize(input);
+
+		EventEmitter.on('position-change', this.onPositionChange.bind(this));
+		EventEmitter.on('position-invalid', this.onPositionInvalid.bind(this));
+		EventEmitter.on('next-mission', this.onNextMission.bind(this));
+	}
+
+	initialize(input) {
+		this._fullInput = input;
+		this.input = this.getRandomInput(input);
 		this.lastDistance = null;
 		this.view = new View;
 		let pos = this.generateRandomPosition().then((pos)=> {
-			this._streetView = new StreetView(input, pos);
+			this._streetView = new StreetView(this.input, pos);
 			this._player = new Player(pos);
 			this.computeDistance();
 			this.view.updateMissionBlock({
@@ -22,9 +31,17 @@ export default class Game {
 				url: this.input.url
 			})
 		});
+	}
 
-		EventEmitter.on('position-change', this.onPositionChange.bind(this));
-		EventEmitter.on('position-invalid', this.onPositionInvalid.bind(this));
+	getRandomInput() {
+		let ran = Math.floor(Math.random() * this._fullInput.places.length);
+		let res = this._fullInput.places.splice(ran, 1);
+		return res[0]
+	}
+
+	onNextMission() {
+		this.initialize(this._fullInput);
+		this.view.hideFinishedNotification();
 	}
 
 	onPositionInvalid() {

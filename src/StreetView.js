@@ -1,9 +1,7 @@
 import {EventEmitter} from './EventEmitter';
-import ee from 'event-emitter';
 
 export default class StreetView {
 	constructor(input, randomPos) {
-		console.log('GOAL: ', input.coordinates, 'randomPOS: ', randomPos)
 		this.initMap(input, randomPos);
 	}
 

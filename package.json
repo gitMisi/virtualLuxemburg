@@ -25,6 +25,7 @@
     "webpack": "^2.2.1"
   },
   "dependencies": {
+    "delegate-dom": "^1.0.1",
     "domquery": "^3.0.0",
     "event-emitter": "^0.3.4",
     "handlebars": "^4.0.6",
