@@ -8,7 +8,8 @@
         "coordinates": {
           "lat": 49.611465,
           "lng": 6.133832
-        }
+        },
+        "distance":25
       },
       {
         "name": "Place Guillaume II, Luxembourg City",
@@ -17,7 +18,8 @@
         "coordinates": {
           "lat": 49.610687,
           "lng": 6.130810
-        }
+        },
+        "distance":47
       }
     ]
 }
