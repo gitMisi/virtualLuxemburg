@@ -1,9 +1,10 @@
 export default class View {
-	displayWrongWayNotification() {
+	displayWrongWayNotification(display) {
 		console.log('MICSINASZ???')
+		//document.getElementsByClassName('border')[0].classList[display === true? 'remove' : 'add']('hidden');
 	}
 
 	displayFinishedNotification() {
-		console.log(' YOU FOUND IT! ')
+		//document.getElementsByClassName('mission_success')[0].classList.remove('hidden');
 	}
 }
