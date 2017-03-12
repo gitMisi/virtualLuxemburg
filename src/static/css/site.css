@@ -244,9 +244,15 @@ img {
     height: 100%;
 }
 .mission_success_content {
+    position: absolute;
     height: 500px;
     width: 900px;
-    margin: 200px auto 0 auto;
+    margin: auto;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    z-index: 10;
 }
 .overlay_header {
     width:100%;
