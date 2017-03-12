@@ -998,9 +998,6 @@ class Game {
 	constructor(input) {
 		this.initialize(input);
 
-		this._firstPositionChanged = false;
-		this._firstPanoChanged = false;
-
 		__WEBPACK_IMPORTED_MODULE_2__EventEmitter__["a" /* EventEmitter */].on('position-change', this.onPositionChange.bind(this));
 		__WEBPACK_IMPORTED_MODULE_2__EventEmitter__["a" /* EventEmitter */].on('position-invalid', this.onPositionInvalid.bind(this));
 		__WEBPACK_IMPORTED_MODULE_2__EventEmitter__["a" /* EventEmitter */].on('next-mission', this.onNextMission.bind(this));
@@ -1022,6 +1019,8 @@ class Game {
 				url: this.input.url
 			});
 		});
+		this._firstPositionChanged = false;
+		this._firstPanoChanged = false;
 	}
 
 	getRandomInput() {
@@ -3984,12 +3983,7 @@ class StreetView {
 		this.initMap(input, randomPos);
 	}
 
-	/**
-  *
-  * @param input
-  */
 	initMap(input, randomPos) {
-		this.goal = new google.maps.LatLng(input.coordinates.lat, input.coordinates.lng);
 		this._streetview = new google.maps.StreetViewService();
 
 		this.panorama = new google.maps.StreetViewPanorama(document.getElementById('container'));
@@ -4095,6 +4089,10 @@ class View {
 		});
 	}
 
+	deMinimizeMissionBlock() {
+		__WEBPACK_IMPORTED_MODULE_3_domquery___default()('#mission_block').removeClass('minimized');
+	}
+
 	minimizeMissionBlock() {
 		__WEBPACK_IMPORTED_MODULE_3_domquery___default()('#mission_block').addClass('minimized');
 	}
@@ -4102,6 +4100,7 @@ class View {
 	updateMissionBlock(config) {
 		__WEBPACK_IMPORTED_MODULE_3_domquery___default()('#mission_block').html(__WEBPACK_IMPORTED_MODULE_0__templates_MissionBlock_handlebars___default()(config));
 		__WEBPACK_IMPORTED_MODULE_3_domquery___default()('#mission_block').removeClass('fall');
+		this.deMinimizeMissionBlock();
 	}
 
 	displayFinishedNotification(config) {
