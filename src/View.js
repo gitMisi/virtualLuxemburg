@@ -1,4 +1,10 @@
+import MissionBlock from './templates/MissionBlock.handlebars';
+import DistanceBlock from './templates/DistanceBlock.handlebars';
 export default class View {
+
+	updateMissionBlock(config) {
+		document.getElementById('mission_block').innerHTML = MissionBlock(config);
+	}
 	displayWrongWayNotification(display) {
 		document.getElementsByClassName('distance').innerHTML = 'You are too far away.';
 	}
@@ -8,6 +14,6 @@ export default class View {
 	}
 
 	updateDistance(dist) {
-		document.getElementById('distance').innerHTML = 'Distance from target: <span>' + dist + 'm</span>';
+		document.getElementById('distance').innerHTML = DistanceBlock({dist});
 	}
 }

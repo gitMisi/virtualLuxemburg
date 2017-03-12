@@ -1,32 +1,34 @@
 {
-  "places":
-    [
-      {
-        "name": "Musée national d'histoire et d'art Luxembourg (MNHA)",
-        "thumbnail": "http://lol.com",
-        "coordinates": {
-          "lat": 49.611465,
-          "lng": 6.133832
-        },
-        "distance":25
+  "places": [
+    {
+      "name": "Docler Holding S.à r.l.",
+      "thumbnail": "https://geo1.ggpht.com/cbk?panoid=PVRKXTjx8g95isZhWx2ggg&output=thumbnail&cb_client=search.TACTILE.gps&thumb=2&w=408&h=200&yaw=144.93866&pitch=0&thumbfov=100",
+      "description": "lorem ipsum docler",
+      "coordinates": {
+        "lat": 49.632029,
+        "lng": 6.171457
       },
-      {
-        "name": "Place Guillaume II, Luxembourg City",
-        "thumbnail": "http://lol.com",
-        "coordinates": {
-          "lat": 49.610687,
-          "lng": 6.130810
-        },
-        "distance":47
+      "distance": 30
+    },
+    {
+      "name": "Musée national d'histoire et d'art Luxembourg (MNHA)",
+      "thumbnail": "https://lh6.googleusercontent.com/-5F19kfQ8nTc/U9-OlgTmGoI/AAAAAAAAAA4/LCIeYLlF3IwicPLwpbmnh2X_4YxJ-OTrgCJkC/s408-k-no/",
+      "description": "lorem ipsum 1",
+      "coordinates": {
+        "lat": 49.611465,
+        "lng": 6.133832
       },
-      {
-        "name": "Docler Holding S.à r.l.",
-        "thumbnail": "https://geo1.ggpht.com/cbk?panoid=PVRKXTjx8g95isZhWx2ggg&output=thumbnail&cb_client=search.TACTILE.gps&thumb=2&w=408&h=200&yaw=144.93866&pitch=0&thumbfov=100",
-        "coordinates": {
-          "lat": 49.632029,
-          "lng": 6.171457
-        },
-        "distance":20
-      }
-    ]
+      "distance": 25
+    },
+    {
+      "name": "Place Guillaume II, Luxembourg City",
+      "thumbnail": "https://lh5.googleusercontent.com/proxy/7n-7FUUu6fSWtvd9gruxtsk-6xKIGAhbn-qoXge1eoGU-NsdEtx0ElYs2Wc7usofaxDjzwxgEfJ7JoggadtDi7EScqo9Tw=w408-h271",
+      "description": "lorem ipsum 2",
+      "coordinates": {
+        "lat": 49.610687,
+        "lng": 6.130810
+      },
+      "distance": 47
+    }
+  ]
 }
