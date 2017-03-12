@@ -143,6 +143,10 @@ img {
 @-webkit-keyframes slide-in { 0% {top:0; right:0} 100% { top:20vh; right:10vw } }
 @keyframes slide-in { 0% {top:0; right:0} 100% { top:20vh; right:10vw } }
 
+@-moz-keyframes minimizing { 0% {top:20vh; right:10vw} 100% { top:50px; right:0 } }
+@-webkit-keyframes minimizing { 0% {top:20vh; right:10vw} 100% { top:50px; right:0 } }
+@keyframes minimizing { 0% {top:20vh; right:10vw} 100% { top:50px; right:0 } }
+
 @-moz-keyframes fall { 0% {top:20vh} 100% { top:120vh} }
 @-webkit-keyframes fall { 0% {top:20vh} 100% { top:120vh} }
 @keyframes fall { 0% {top:20vh} 100% { top:120vh} }
@@ -163,12 +167,21 @@ img {
     -webkit-animation: slide-in 1s forwards ease-in-out;
     -moz-animation: slide-in 1s forwards ease-in-out;
     animation: slide-in 1s forwards ease-in-out;
+    transition: all 1s;
 }
 #mission_block.fall {
     -webkit-animation: fall 1s forwards ease-in-out;
     -moz-animation: fall 1s forwards ease-in-out;
     animation: fall 1s forwards ease-in-out;
 }
+    .minimize {
+        position: absolute;
+        top: 2px;
+        right: 10px;
+        font-size: 45px;
+        color: #fff;
+        cursor: pointer;
+    }
     .mission_header {
         position: relative;
         width:100%;
@@ -208,6 +221,12 @@ img {
             font-size: 18px;
             font-weight: bold;
             text-align: center;
+        }
+        .mission_content .mission_image,
+        .mission_content .mission_image img {
+            width: 360px;
+            height: 240px;
+            transition: all 1s;
         }
     .mission_footer {
         width:100%;
@@ -257,9 +276,33 @@ img {
         line-height: 20px;
         text-align: justify;
         overflow: hidden;
-        text-overflow: ellipsis;
 		display: none;
     }
+    .more_text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+#mission_block.minimized .mission_header,
+#mission_block.minimized .mission_footer,
+#mission_block.minimized .mission_content h3 {
+    display:none;
+}
+#mission_block.minimized {
+    width: 180px;
+    height: 120px;
+    border: 1px solid #ccc;
+    transition: all 1s;
+    -webkit-animation: minimizing 0.5s forwards ease-in-out;
+    -moz-animation: minimizing 0.5s forwards ease-in-out;
+    animation: minimizing 0.5s forwards ease-in-out;
+
+}
+#mission_block.minimized .mission_content .mission_image,
+#mission_block.minimized .mission_content .mission_image img {
+    width: 180px;
+    height: 120px;
+    transition: all 1s;
+}
 /*mission block end*/
 
 .shadow {
