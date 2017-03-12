@@ -253,7 +253,7 @@ img {
     height: 100%;
     top: 0;
     left: 0;
-    z-index: 9;
+    z-index: 10;
     background-color: rgba(0,0,0,.6);
 }
 @-moz-keyframes pulse { 0% { -moz-opacity: 0.9; } 50% { -moz-opacity: 0.6; } 100% { -moz-opacity: 0.9; } }
