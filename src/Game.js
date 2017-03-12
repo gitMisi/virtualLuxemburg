@@ -13,6 +13,7 @@ export default class Game {
 		let pos = this.generateRandomPosition().then((pos)=>{
 			this._streetView = new StreetView(input, pos);
 			this._player = new Player(pos);
+			this.computeDistance();
 		});
 
 		EventEmitter.on('position-change', this.onPositionChange.bind(this));
@@ -57,15 +58,18 @@ export default class Game {
 		this.computeDistance();
 
 		if (!isValid) {
-			this.view.displayWrongWayNotification();
+			this.view.displayWrongWayNotification(true);
 		}
 	}
 
 	computeDistance() {
 		let dist = computeDistance(this._player.getPosition(), this.input.coordinates);
-		console.log('distance: ', dist);
+
 		if (dist <= 20) {
 			this.view.displayFinishedNotification();
+		}
+		else {
+			this.view.updateDistance(Math.round(dist));
 		}
 	}
 }

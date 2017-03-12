@@ -1,10 +1,13 @@
 export default class View {
 	displayWrongWayNotification(display) {
-		console.log('MICSINASZ???')
-		//document.getElementsByClassName('border')[0].classList[display === true? 'remove' : 'add']('hidden');
+		document.getElementsByClassName('distance').innerHTML = 'You are too far away.';
 	}
 
 	displayFinishedNotification() {
-		//document.getElementsByClassName('mission_success')[0].classList.remove('hidden');
+		document.getElementsByClassName('mission_success')[0].classList.remove('hidden');
+	}
+
+	updateDistance(dist) {
+		document.getElementById('distance').innerHTML = 'Distance from target: <span>' + dist + 'm</span>';
 	}
 }
