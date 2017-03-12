@@ -109,8 +109,8 @@ img {
 /*mission block start*/
 #mission_block {
     position: absolute;
-    top:150px;
-    right: 400px;
+    top:20vh;
+    right: 10vw;
     z-index: 6;
     width: 360px;
     box-shadow: 0 0 20px #5a5a5a;
