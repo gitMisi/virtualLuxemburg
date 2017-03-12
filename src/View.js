@@ -1,19 +1,27 @@
 import MissionBlock from './templates/MissionBlock.handlebars';
 import DistanceBlock from './templates/DistanceBlock.handlebars';
+import MissionSuccess from './templates/MissionSuccess.handlebars';
+import dom from 'domquery';
+
 export default class View {
 
 	updateMissionBlock(config) {
-		document.getElementById('mission_block').innerHTML = MissionBlock(config);
+		dom('#mission_block').add(MissionBlock(config));
 	}
-	displayWrongWayNotification(display) {
-		document.getElementsByClassName('distance').innerHTML = 'You are too far away.';
-	}
-
-	displayFinishedNotification() {
-		document.getElementsByClassName('mission_success')[0].classList.remove('hidden');
+	displayFinishedNotification(config) {
+		dom('body').add(MissionSuccess(config));
 	}
 
 	updateDistance(dist) {
-		document.getElementById('distance').innerHTML = DistanceBlock({dist});
+		dom('#distance').html(DistanceBlock({dist}));
+	}
+
+	showDistanceIncreasing() {
+		document.getElementById('distance').className = '';
+		dom('#distance').addClass('red');
+	}
+	showDistanceDecreasing() {
+		document.getElementById('distance').className = '';
+		dom('#distance').addClass('green');
 	}
 }

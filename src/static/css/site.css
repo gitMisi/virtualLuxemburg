@@ -196,7 +196,10 @@ img {
         cursor: pointer;
         background-color: #00a1de;
         text-align: center;
+		display: block;
     }
+	#csekboksz {display: none}
+	#csekboksz:checked + div.mission_more_text { display: block}
         .place_name {
             display: inline-block;
             padding: 15px 0 15px 0;
@@ -237,6 +240,7 @@ img {
         text-align: justify;
         overflow: hidden;
         text-overflow: ellipsis;
+		display: none;
     }
 /*mission block end*/
 
@@ -367,4 +371,7 @@ img {
     text-align: center;
 }
 
+.gm-iv-address {
+	display: none!important;
+}
 /*overlays end*/

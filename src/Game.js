@@ -9,11 +9,17 @@ import View from './View';
 export default class Game {
 	constructor(input) {
 		this.input = input;
+		this.lastDistance = null;
 		this.view = new View;
 		let pos = this.generateRandomPosition().then((pos)=> {
 			this._streetView = new StreetView(input, pos);
 			this._player = new Player(pos);
 			this.computeDistance();
+			this.view.updateMissionBlock({
+				name: this.input.name,
+				description: this.input.description,
+				thumbnail: this.input.thumbnail
+			})
 		});
 
 		EventEmitter.on('position-change', this.onPositionChange.bind(this));
@@ -59,22 +65,26 @@ export default class Game {
 
 	onPositionChange(ev) {
 		this._player.updatePosition(ev.lat, ev.lng);
-		let isValid = validateCoordinate(this._player.getPosition(), this.input.coordinates, MAX_RADIUS);
-		this.computeDistance();
-
-		if (!isValid) {
-			this.view.displayWrongWayNotification(true);
+		let dist = this.computeDistance();
+		if (this.lastDistance > dist) {
+			this.view.showDistanceDecreasing();
 		}
+		else if (this.lastDistance < dist) {
+			this.view.showDistanceIncreasing();
+		}
+
+		this.lastDistance = dist;
 	}
 
 	computeDistance() {
 		let dist = computeDistance(this._player.getPosition(), this.input.coordinates);
 
 		if (dist <= this.input.distance) {
-			this.view.displayFinishedNotification();
+			this.view.displayFinishedNotification(this.input);
 		}
 		else {
 			this.view.updateDistance(Math.round(dist));
 		}
+		return dist;
 	}
 }
