@@ -4,7 +4,6 @@
       {
         "name": "Musée national d'histoire et d'art Luxembourg (MNHA)",
         "thumbnail": "http://lol.com",
-        "wikipedia": "http://lol.com",
         "coordinates": {
           "lat": 49.611465,
           "lng": 6.133832
@@ -14,12 +13,20 @@
       {
         "name": "Place Guillaume II, Luxembourg City",
         "thumbnail": "http://lol.com",
-        "wikipedia": "http://lol.com",
         "coordinates": {
           "lat": 49.610687,
           "lng": 6.130810
         },
         "distance":47
+      },
+      {
+        "name": "Docler Holding S.à r.l.",
+        "thumbnail": "https://geo1.ggpht.com/cbk?panoid=PVRKXTjx8g95isZhWx2ggg&output=thumbnail&cb_client=search.TACTILE.gps&thumb=2&w=408&h=200&yaw=144.93866&pitch=0&thumbfov=100",
+        "coordinates": {
+          "lat": 49.632029,
+          "lng": 6.171457
+        },
+        "distance":20
       }
     ]
 }
