@@ -10,6 +10,7 @@ export default class View {
 	}
 	displayFinishedNotification(config) {
 		dom('body').add(MissionSuccess(config));
+        dom('#mission_block').addClass('fall');
 	}
 
 	updateDistance(dist) {

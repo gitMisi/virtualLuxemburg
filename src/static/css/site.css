@@ -106,7 +106,7 @@ img {
         -moz-box-shadow: 0 0 80px #000;
     }
         #menu ul {
-            display: block;
+            display: inline-block;
             height: 50px;
             padding: 0 20px;
         }
@@ -128,11 +128,23 @@ img {
                 #menu li span:hover {
                     color: #00a1de;
                 }
+        .slogan {
+            float: right;
+            font-size: 20px;
+            color: #fff;
+            font-style: italic;
+            display: inline-block;
+            margin: 15px 20px 0 0;
+        }
 
 /*mission block start*/
 @-moz-keyframes slide-in { 0% {top:0; right:0} 100% { top:20vh; right:10vw } }
 @-webkit-keyframes slide-in { 0% {top:0; right:0} 100% { top:20vh; right:10vw } }
 @keyframes slide-in { 0% {top:0; right:0} 100% { top:20vh; right:10vw } }
+
+@-moz-keyframes fall { 0% {top:20vh} 100% { top:120vh} }
+@-webkit-keyframes fall { 0% {top:20vh} 100% { top:120vh} }
+@keyframes fall { 0% {top:20vh} 100% { top:120vh} }
 
 @-moz-keyframes fade-in { 0% { -moz-opacity: 0; } 100% { -moz-opacity: 1; } }
 @-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
@@ -150,6 +162,12 @@ img {
     -webkit-animation: slide-in 1s forwards ease-in-out;
     -moz-animation: slide-in 1s forwards ease-in-out;
     animation: slide-in 1s forwards ease-in-out;
+    border:1px solid red;
+}
+#mission_block.fall {
+    -webkit-animation: fall 1s forwards ease-in-out;
+    -moz-animation: fall 1s forwards ease-in-out;
+    animation: fall 1s forwards ease-in-out;
 }
     .mission_header {
         position: relative;
