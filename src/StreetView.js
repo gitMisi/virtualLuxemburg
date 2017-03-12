@@ -2,37 +2,45 @@ import {EventEmitter} from './EventEmitter';
 import ee from 'event-emitter';
 
 export default class StreetView {
-	constructor(input, player) {
-		this._player = player;
-		this.initMap(input);
+	constructor(input, randomPos) {
+		this.initial = true;
+		this.initMap(input, randomPos);
 	}
 
 	/**
 	 *
 	 * @param input
 	 */
-	initMap(input) {
-		this.radius = 20;
+	initMap(input, randomPos) {
 		this.goal = new google.maps.LatLng(input.coordinates.lat, input.coordinates.lng);
 		this._streetview = new google.maps.StreetViewService();
 
 		this.panorama = new google.maps.StreetViewPanorama(document.getElementById('container'));
+		this._streetview.getPanorama({location: randomPos}, this.processSVData.bind(this));
 
 		this.panorama.addListener('links_changed', () => {
-			EventEmitter.emit('position-change', {lat: this.panorama.getPosition().lat(), lng: this.panorama.getPosition().lng()});
+			if (this.initial) {
+				this.initial = false;
+			}
+			EventEmitter.emit('position-change', {
+				lat: this.panorama.getPosition().lat(),
+				lng: this.panorama.getPosition().lng()
+			});
 
 		});
-		this._streetview.getPanorama({location: input.coordinates, radius: 50}, this.processSVData.bind(this));
 	}
 
 	processSVData(data, status) {
 		if (status === 'OK') {
+			if (data.copyright.indexOf('Google') == -1 || data.links.length === 0) {
+				EventEmitter.emit('position-invalid');
+			}
+			console.log('daTA: ', data)
 			var marker = new google.maps.Marker({
 				position: data.location.latLng,
 				map: this.map,
 				title: data.location.description
 			});
-
 			this.panorama.setPano(data.location.pano);
 			this.panorama.setPov({
 				heading: 270,
@@ -50,13 +58,9 @@ export default class StreetView {
 				this.panorama.setVisible(true);
 			});
 		} else {
+			EventEmitter.emit('position-invalid')
 			console.error('Street View data not found for this location.');
 		}
 	}
 
-	validate() {
-		let pos = this._player.getPosition();
-		let latlng = new google.maps.LatLng(pos.lat, pos.lng);
-		return (google.maps.geometry.spherical.computeDistanceBetween(latlng, this.goal) <= this.radius);
-	}
 }
