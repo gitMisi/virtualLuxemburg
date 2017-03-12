@@ -1,6 +1,23 @@
 {
-  "coordinates": {
-    "lat": 37.869085,
-    "lng": -122.254775
-  }
+  "places":
+    [
+      {
+        "name": "Musée national d'histoire et d'art Luxembourg (MNHA)",
+        "thumbnail": "http://lol.com",
+        "wikipedia": "http://lol.com",
+        "coordinates": {
+          "lat": 49.611370,
+          "lng": 6.133842
+        }
+      },
+      {
+        "name": "Place Guillaume II, Luxembourg City",
+        "thumbnail": "http://lol.com",
+        "wikipedia": "http://lol.com",
+        "coordinates": {
+          "lat": 49.610687,
+          "lng": 6.130810
+        }
+      }
+    ]
 }
