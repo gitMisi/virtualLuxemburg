@@ -41,7 +41,7 @@ export default class StreetView {
 			});
 			this.panorama.setPano(data.location.pano);
 			this.panorama.setPov({
-				heading: 270,
+				heading: 360 * Math.random(),
 				pitch: 0
 			});
 			this.panorama.setVisible(true);
@@ -50,7 +50,7 @@ export default class StreetView {
 				var markerPanoID = data.location.pano;
 				this.panorama.setPano(markerPanoID);
 				this.panorama.setPov({
-					heading: 270,
+					heading: 360 * Math.random(),
 					pitch: 0
 				});
 				this.panorama.setVisible(true);
