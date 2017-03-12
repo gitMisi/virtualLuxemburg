@@ -18,7 +18,8 @@ export default class Game {
 			this.view.updateMissionBlock({
 				name: this.input.name,
 				description: this.input.description,
-				thumbnail: this.input.thumbnail
+				thumbnail: this.input.thumbnail,
+				url: this.input.url
 			})
 		});
 
@@ -33,7 +34,8 @@ export default class Game {
 			this.view.updateMissionBlock({
 				name: this.input.name,
 				description: this.input.description,
-				thumbnail: this.input.thumbnail
+				thumbnail: this.input.thumbnail,
+                url: this.input.url
 			})
 		});
 	}

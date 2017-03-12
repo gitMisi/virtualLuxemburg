@@ -8,7 +8,8 @@
         "lat": 49.632029,
         "lng": 6.171457
       },
-      "distance": 30
+      "distance": 30,
+      "url": "http://www.doclerholding.com"
     },
     {
       "name": "Musée national d'histoire et d'art Luxembourg (MNHA)",
@@ -18,7 +19,8 @@
         "lat": 49.611465,
         "lng": 6.133832
       },
-      "distance": 25
+      "distance": 25,
+      "url": "http://www.mnha.lu/"
     },
     {
       "name": "Place Guillaume II, Luxembourg City",
@@ -28,7 +30,8 @@
         "lat": 49.610687,
         "lng": 6.130810
       },
-      "distance": 47
+      "distance": 47,
+      "url": "https://en.wikipedia.org/wiki/Place_Guillaume_II"
     }
   ]
 }
