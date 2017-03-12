@@ -5,12 +5,7 @@ export default class StreetView {
 		this.initMap(input, randomPos);
 	}
 
-	/**
-	 *
-	 * @param input
-	 */
 	initMap(input, randomPos) {
-		this.goal = new google.maps.LatLng(input.coordinates.lat, input.coordinates.lng);
 		this._streetview = new google.maps.StreetViewService();
 
 		this.panorama = new google.maps.StreetViewPanorama(document.getElementById('container'));

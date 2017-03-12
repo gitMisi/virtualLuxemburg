@@ -10,9 +10,6 @@ export default class Game {
 	constructor(input) {
 		this.initialize(input);
 
-		this._firstPositionChanged = false;
-		this._firstPanoChanged = false;
-
 		EventEmitter.on('position-change', this.onPositionChange.bind(this));
 		EventEmitter.on('position-invalid', this.onPositionInvalid.bind(this));
 		EventEmitter.on('next-mission', this.onNextMission.bind(this));
@@ -34,6 +31,8 @@ export default class Game {
 				url: this.input.url
 			})
 		});
+		this._firstPositionChanged = false;
+		this._firstPanoChanged = false;
 	}
 
 	getRandomInput() {

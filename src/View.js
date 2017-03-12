@@ -19,6 +19,10 @@ export default class View {
 		});
 	}
 
+	deMinimizeMissionBlock() {
+		dom('#mission_block').removeClass('minimized');
+	}
+
 	minimizeMissionBlock() {
 		dom('#mission_block').addClass('minimized');
 	}
@@ -26,6 +30,7 @@ export default class View {
 	updateMissionBlock(config) {
 		dom('#mission_block').html(MissionBlock(config));
 		dom('#mission_block').removeClass('fall');
+		this.deMinimizeMissionBlock();
 	}
 
 	displayFinishedNotification(config) {
