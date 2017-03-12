@@ -70,7 +70,25 @@ img {
     position: relative;
     overflow: hidden;
 }
-    #menu {
+
+#distance {
+    position: absolute;
+    top: 100px;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 300px;
+    font-size: 24px;
+    font-weight: bold;
+    text-shadow: 0 0 30px #525252;
+}
+.red {
+    color:#ed2939;
+}
+.green {
+    color:#198319;
+}
+#menu {
         position: absolute;
         top:0;
         left:0;
