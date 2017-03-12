@@ -10,6 +10,9 @@ export default class Game {
 	constructor(input) {
 		this.initialize(input);
 
+		this._firstPositionChanged = false;
+		this._firstPanoChanged = false;
+
 		EventEmitter.on('position-change', this.onPositionChange.bind(this));
 		EventEmitter.on('position-invalid', this.onPositionInvalid.bind(this));
 		EventEmitter.on('next-mission', this.onNextMission.bind(this));
@@ -83,6 +86,11 @@ export default class Game {
 	}
 
 	onPositionChange(ev) {
+		if (!this._firstPositionChanged) {
+			this._firstPositionChanged = true;
+		} else {
+			this.view.minimizeMissionBlock();
+		}
 		this._player.updatePosition(ev.lat, ev.lng);
 		let dist = this.computeDistance();
 		if (this.lastDistance > dist) {
