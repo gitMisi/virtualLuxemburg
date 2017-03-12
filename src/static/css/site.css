@@ -162,7 +162,6 @@ img {
     -webkit-animation: slide-in 1s forwards ease-in-out;
     -moz-animation: slide-in 1s forwards ease-in-out;
     animation: slide-in 1s forwards ease-in-out;
-    border:1px solid red;
 }
 #mission_block.fall {
     -webkit-animation: fall 1s forwards ease-in-out;
