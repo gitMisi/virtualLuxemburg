@@ -10,7 +10,7 @@ export default class Game {
 	constructor(input) {
 		this.input = input;
 		this.view = new View;
-		let pos = this.generateRandomPosition().then((pos)=>{
+		let pos = this.generateRandomPosition().then((pos)=> {
 			this._streetView = new StreetView(input, pos);
 			this._player = new Player(pos);
 			this.computeDistance();
@@ -21,14 +21,19 @@ export default class Game {
 	}
 
 	onPositionInvalid() {
-		let pos = this.generateRandomPosition().then((pos)=>{
+		let pos = this.generateRandomPosition().then((pos)=> {
 			this._streetView = new StreetView(this.input, pos);
 			this._player = new Player(pos);
+			this.view.updateMissionBlock({
+				name: this.input.name,
+				description: this.input.description,
+				thumbnail: this.input.thumbnail
+			})
 		});
 	}
 
 	generateRandomPosition() {
-		return new Promise(function(resolve, reject) {
+		return new Promise(function (resolve, reject) {
 			var ran = {}, result = {};
 			do {
 				ran = randomGeo({lat: this.input.coordinates.lat, lng: this.input.coordinates.lng}, MAX_RADIUS);
@@ -65,7 +70,7 @@ export default class Game {
 	computeDistance() {
 		let dist = computeDistance(this._player.getPosition(), this.input.coordinates);
 
-		if (dist <= 20) {
+		if (dist <= this.input.distance) {
 			this.view.displayFinishedNotification();
 		}
 		else {

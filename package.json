@@ -4,8 +4,8 @@
   "description": "Game of Code 2017 Jack Daniels Team\r Commit test from Attila",
   "main": "index.js",
   "scripts": {
-    "build": "webpack",
-    "watch": "webpack --watch"
+    "build": "node_modules\\.bin\\handlebars -m src/templates/> src/templates/templates.js && webpack",
+    "watch": "node_modules\\.bin\\handlebars -m src/templates/> src/templates/templates.js && webpack --watch"
   },
   "repository": {
     "type": "git",
@@ -20,10 +20,13 @@
   "devDependencies": {
     "babel-core": "^6.23.1",
     "babel-loader": "^6.3.2",
+    "handlebars-loader": "^1.4.0",
     "json-loader": "^0.5.4",
     "webpack": "^2.2.1"
   },
   "dependencies": {
-    "event-emitter": "^0.3.4"
+    "event-emitter": "^0.3.4",
+    "handlebars": "^4.0.6",
+    "handlebars-runtime": "^1.0.12"
   }
 }
