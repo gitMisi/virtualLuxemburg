@@ -69,6 +69,7 @@ img {
     height: 100vh;
     position: relative;
     overflow: hidden;
+    background: url(../images/loader.gif) center center no-repeat transparent;
 }
 
 #distance {
@@ -129,6 +130,14 @@ img {
                 }
 
 /*mission block start*/
+@-moz-keyframes slide-in { 0% {top:0; right:0} 100% { top:20vh; right:10vw } }
+@-webkit-keyframes slide-in { 0% {top:0; right:0} 100% { top:20vh; right:10vw } }
+@keyframes slide-in { 0% {top:0; right:0} 100% { top:20vh; right:10vw } }
+
+@-moz-keyframes fade-in { 0% { -moz-opacity: 0; } 100% { -moz-opacity: 1; } }
+@-webkit-keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+@keyframes fade-in { 0% { opacity: 0; } 100% { opacity: 1; } }
+
 #mission_block {
     position: absolute;
     top:20vh;
@@ -138,6 +147,9 @@ img {
     box-shadow: 0 0 20px #5a5a5a;
     -webkit-box-shadow: 0 0 20px #5a5a5a;
     -moz-box-shadow: 0 0 20px #5a5a5a;
+    -webkit-animation: slide-in 1s forwards ease-in-out;
+    -moz-animation: slide-in 1s forwards ease-in-out;
+    animation: slide-in 1s forwards ease-in-out;
 }
     .mission_header {
         position: relative;
@@ -156,10 +168,17 @@ img {
     }
     .pin {
         position: absolute;
+        opacity: 0;
         width:66px;
         height: 57px;
         top: -20px;
         left: 140px;
+        -webkit-animation: fade-in 1s forwards ease-in-out;
+        -moz-animation: fade-in 1s forwards ease-in-out;
+        animation: fade-in 1s forwards ease-in-out;
+        animation-delay: 1s;
+        -moz-animation-delay: 1s;
+        -webkit-animation-delay: 1s;
     }
     .mission_content {
         background: rgba(255,255,255,.8) url(../images/lion_small.png) center 20px no-repeat;
@@ -174,14 +193,13 @@ img {
         }
     .mission_footer {
         width:100%;
-        height: 50px;
         cursor: pointer;
         background-color: #00a1de;
         text-align: center;
     }
         .place_name {
             display: inline-block;
-            padding-top: 15px;
+            padding: 15px 0 15px 0;
             color: #fff;
             font-size: 18px;
             text-transform: uppercase;
